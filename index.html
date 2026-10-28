@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -60,7 +61,9 @@
       box-shadow: 0 0 16px var(--brand-green-glow) !important;
     }
 
-    button, select, input {
+    button,
+    select,
+    input {
       font-family: inherit;
     }
 
@@ -185,8 +188,17 @@
     }
 
     @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.8); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.35;
+        transform: scale(0.8);
+      }
     }
 
     .equip-chip {
@@ -284,7 +296,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       position: relative;
       overflow: hidden;
     }
@@ -493,22 +505,27 @@
       --accent-color: #f59e0b;
       background: linear-gradient(165deg, rgba(245, 158, 11, 0.07) 0%, rgba(18, 28, 46, 0.95) 45%);
     }
+
     .card-pm25 {
       --accent-color: #14b8a6;
       background: linear-gradient(165deg, rgba(20, 184, 166, 0.07) 0%, rgba(18, 28, 46, 0.95) 45%);
     }
+
     .card-pm10 {
       --accent-color: #38bdf8;
       background: linear-gradient(165deg, rgba(56, 189, 248, 0.07) 0%, rgba(18, 28, 46, 0.95) 45%);
     }
+
     .card-temp {
       --accent-color: #f97316;
       background: linear-gradient(165deg, rgba(249, 115, 22, 0.07) 0%, rgba(18, 28, 46, 0.95) 45%);
     }
+
     .card-humidity {
       --accent-color: #06b6d4;
       background: linear-gradient(165deg, rgba(6, 182, 212, 0.07) 0%, rgba(18, 28, 46, 0.95) 45%);
     }
+
     .card-tvoc {
       --accent-color: #a855f7;
       background: linear-gradient(165deg, rgba(168, 85, 247, 0.07) 0%, rgba(18, 28, 46, 0.95) 45%);
@@ -674,9 +691,17 @@
       gap: 2px;
     }
 
-    .delta-up { color: #f87171; }
-    .delta-down { color: #4ade80; }
-    .delta-same { color: var(--text-dim); }
+    .delta-up {
+      color: #f87171;
+    }
+
+    .delta-down {
+      color: #4ade80;
+    }
+
+    .delta-same {
+      color: var(--text-dim);
+    }
 
     /* ============================================================
        SPLIT SECTION: REAL-TIME TREND CHART & SENSOR HEALTH GUIDELINES
@@ -901,7 +926,7 @@
       width: 100%;
       max-width: 520px;
       padding: 24px;
-      box-shadow: 0 24px 48px rgba(0,0,0,0.8);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8);
     }
 
     .modal-header {
@@ -946,6 +971,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- TV Top Header -->
@@ -956,14 +982,14 @@
         <rect width="100" height="100" rx="22" fill="#121c2e" />
         <path d="M28 72V28H46C56 28 62 34 62 42C62 50 56 56 46 56H38V72H28Z" fill="#78C33D" />
         <circle cx="68" cy="56" r="10" fill="#22d3ee" />
-        <path d="M48 20L75 48" stroke="#78C33D" stroke-width="5" stroke-linecap="round"/>
+        <path d="M48 20L75 48" stroke="#78C33D" stroke-width="5" stroke-linecap="round" />
       </svg>
       <div class="brand-text">
         <div class="brand-title">OPTI<span>BYTE</span> <span class="tag-tv">IAQ LIVE TV</span></div>
         <div class="brand-subtitle">
           <span>Indoor Air Quality System</span>
           <span>&bull;</span>
-          <span id="headerSiteText" style="color:#22d3ee;">Chennai Plant</span>
+          <span id="headerSiteText" style="color:#22d3ee;">Live Stream</span>
         </div>
       </div>
     </div>
@@ -985,7 +1011,8 @@
         <div class="clock-time" id="clockTime">--:--:--</div>
         <div class="clock-date" id="clockDate">Loading...</div>
       </div>
-      <button class="btn btn-primary" id="btnRefresh" title="Manual Sync (Press R)" onclick="triggerManualFetch()" tabindex="1">
+      <button class="btn btn-primary" id="btnRefresh" title="Manual Sync (Press R)" onclick="triggerManualFetch()"
+        tabindex="1">
         &#x21bb; Sync
       </button>
       <button class="btn" id="btnFullscreen" title="Fullscreen (Press F)" tabindex="2">
@@ -1006,7 +1033,7 @@
         <div class="iaq-score-dial">
           <svg viewBox="0 0 86 86">
             <circle class="dial-track" cx="43" cy="43" r="36" />
-            <circle class="dial-fill" id="dialCircle" cx="43" cy="43" r="36" />
+            <circle class="dial-fill" id="dialCircle" cx="43" cy="43" r="36" style="stroke-dashoffset: 226.2;" />
           </svg>
           <div class="dial-value">
             <div class="dial-num" id="heroScoreVal">--</div>
@@ -1016,15 +1043,16 @@
 
         <div class="hero-info">
           <div class="hero-badge-wrap">
-            <span class="iaq-health-badge" id="heroStatusBadge">ANALYZING</span>
+            <span class="iaq-health-badge" id="heroStatusBadge">CONNECTING</span>
             <span class="sync-indicator">
               <span id="heroSyncDot">&#9679;</span>
-              <span id="heroLastSynced">Awaiting initial telemetry...</span>
+              <span id="heroLastSynced">Connecting to live API...</span>
             </span>
           </div>
           <div class="hero-title" id="heroTitle">Indoor Air Quality Telemetry</div>
           <div class="hero-desc" id="heroDesc">
-            Live stream from Sustainabyte Provisioning Engine. Next automatic sync in <strong id="refreshCountdown">15</strong>s.
+            Live stream from Sustainabyte Provisioning Engine. Next automatic sync in <strong
+              id="refreshCountdown">15</strong>s.
           </div>
         </div>
       </div>
@@ -1032,11 +1060,11 @@
       <div class="hero-meta-stats">
         <div class="hstat-item">
           <span class="hstat-label">Air Comfort</span>
-          <span class="hstat-val" id="metaComfort" style="color:var(--brand-green);">OPTIMAL</span>
+          <span class="hstat-val" id="metaComfort" style="color:var(--brand-green);">--</span>
         </div>
         <div class="hstat-item">
           <span class="hstat-label">Ventilation Status</span>
-          <span class="hstat-val" id="metaVentilation" style="color:var(--accent-cyan);">NORMAL</span>
+          <span class="hstat-val" id="metaVentilation" style="color:var(--accent-cyan);">--</span>
         </div>
         <div class="hstat-item">
           <span class="hstat-label">Data Timestamp</span>
@@ -1059,13 +1087,13 @@
           </div>
 
           <div class="card-val-wrap">
-            <span class="card-val" id="valCo2">867</span>
+            <span class="card-val" id="valCo2">--</span>
             <span class="card-unit">ppm</span>
           </div>
 
           <div class="card-scale-wrap">
             <div class="card-scale-bar">
-              <div class="card-scale-fill" id="barCo2" style="width: 45%;"></div>
+              <div class="card-scale-fill" id="barCo2" style="width: 0%;"></div>
             </div>
             <div class="card-scale-labels">
               <span>400 (Fresh)</span>
@@ -1074,11 +1102,11 @@
             </div>
           </div>
 
-          <span class="card-status-badge badge-moderate" id="badgeCo2">ACCEPTABLE</span>
+          <span class="card-status-badge badge-moderate" id="badgeCo2">--</span>
         </div>
         <div class="card-footer">
           <span class="card-benchmark">Target: &lt; 800 ppm</span>
-          <span class="card-delta" id="deltaCo2">&bull; Syncing</span>
+          <span class="card-delta" id="deltaCo2">&bull; Awaiting</span>
         </div>
       </div>
 
@@ -1094,13 +1122,13 @@
           </div>
 
           <div class="card-val-wrap">
-            <span class="card-val" id="valPm25">37.4</span>
+            <span class="card-val" id="valPm25">--</span>
             <span class="card-unit">&micro;g/m&sup3;</span>
           </div>
 
           <div class="card-scale-wrap">
             <div class="card-scale-bar">
-              <div class="card-scale-fill" id="barPm25" style="width: 37%;"></div>
+              <div class="card-scale-fill" id="barPm25" style="width: 0%;"></div>
             </div>
             <div class="card-scale-labels">
               <span>0 (Clean)</span>
@@ -1109,11 +1137,11 @@
             </div>
           </div>
 
-          <span class="card-status-badge badge-moderate" id="badgePm25">MODERATE</span>
+          <span class="card-status-badge badge-moderate" id="badgePm25">--</span>
         </div>
         <div class="card-footer">
           <span class="card-benchmark">WHO Norm: &lt; 25 &micro;g/m&sup3;</span>
-          <span class="card-delta" id="deltaPm25">&bull; Syncing</span>
+          <span class="card-delta" id="deltaPm25">&bull; Awaiting</span>
         </div>
       </div>
 
@@ -1129,13 +1157,13 @@
           </div>
 
           <div class="card-val-wrap">
-            <span class="card-val" id="valPm10">47.2</span>
+            <span class="card-val" id="valPm10">--</span>
             <span class="card-unit">&micro;g/m&sup3;</span>
           </div>
 
           <div class="card-scale-wrap">
             <div class="card-scale-bar">
-              <div class="card-scale-fill" id="barPm10" style="width: 31%;"></div>
+              <div class="card-scale-fill" id="barPm10" style="width: 0%;"></div>
             </div>
             <div class="card-scale-labels">
               <span>0 (Good)</span>
@@ -1144,11 +1172,11 @@
             </div>
           </div>
 
-          <span class="card-status-badge badge-good" id="badgePm10">HEALTHY</span>
+          <span class="card-status-badge badge-good" id="badgePm10">--</span>
         </div>
         <div class="card-footer">
           <span class="card-benchmark">Limit: &lt; 50 &micro;g/m&sup3;</span>
-          <span class="card-delta" id="deltaPm10">&bull; Syncing</span>
+          <span class="card-delta" id="deltaPm10">&bull; Awaiting</span>
         </div>
       </div>
 
@@ -1164,13 +1192,13 @@
           </div>
 
           <div class="card-val-wrap">
-            <span class="card-val" id="valTemp">28.6</span>
+            <span class="card-val" id="valTemp">--</span>
             <span class="card-unit">&deg;C</span>
           </div>
 
           <div class="card-scale-wrap">
             <div class="card-scale-bar">
-              <div class="card-scale-fill" id="barTemp" style="width: 65%;"></div>
+              <div class="card-scale-fill" id="barTemp" style="width: 0%;"></div>
             </div>
             <div class="card-scale-labels">
               <span>18&deg;C (Cool)</span>
@@ -1179,11 +1207,11 @@
             </div>
           </div>
 
-          <span class="card-status-badge badge-moderate" id="badgeTemp">WARM</span>
+          <span class="card-status-badge badge-moderate" id="badgeTemp">--</span>
         </div>
         <div class="card-footer">
           <span class="card-benchmark">Comfort: 22&deg;C - 26&deg;C</span>
-          <span class="card-delta" id="deltaTemp">&bull; Syncing</span>
+          <span class="card-delta" id="deltaTemp">&bull; Awaiting</span>
         </div>
       </div>
 
@@ -1199,13 +1227,13 @@
           </div>
 
           <div class="card-val-wrap">
-            <span class="card-val" id="valHum">62.2</span>
+            <span class="card-val" id="valHum">--</span>
             <span class="card-unit">% RH</span>
           </div>
 
           <div class="card-scale-wrap">
             <div class="card-scale-bar">
-              <div class="card-scale-fill" id="barHum" style="width: 62%;"></div>
+              <div class="card-scale-fill" id="barHum" style="width: 0%;"></div>
             </div>
             <div class="card-scale-labels">
               <span>30% (Dry)</span>
@@ -1214,11 +1242,11 @@
             </div>
           </div>
 
-          <span class="card-status-badge badge-moderate" id="badgeHum">SLIGHTLY HUMID</span>
+          <span class="card-status-badge badge-moderate" id="badgeHum">--</span>
         </div>
         <div class="card-footer">
           <span class="card-benchmark">ASHRAE Standard: 40 - 60%</span>
-          <span class="card-delta" id="deltaHum">&bull; Syncing</span>
+          <span class="card-delta" id="deltaHum">&bull; Awaiting</span>
         </div>
       </div>
 
@@ -1234,13 +1262,13 @@
           </div>
 
           <div class="card-val-wrap">
-            <span class="card-val" id="valTvoc">34.0</span>
+            <span class="card-val" id="valTvoc">--</span>
             <span class="card-unit">ppb</span>
           </div>
 
           <div class="card-scale-wrap">
             <div class="card-scale-bar">
-              <div class="card-scale-fill" id="barTvoc" style="width: 17%;"></div>
+              <div class="card-scale-fill" id="barTvoc" style="width: 0%;"></div>
             </div>
             <div class="card-scale-labels">
               <span>0 (Clean)</span>
@@ -1249,11 +1277,11 @@
             </div>
           </div>
 
-          <span class="card-status-badge badge-good" id="badgeTvoc">EXCELLENT</span>
+          <span class="card-status-badge badge-good" id="badgeTvoc">--</span>
         </div>
         <div class="card-footer">
           <span class="card-benchmark">Threshold: &lt; 200 ppb</span>
-          <span class="card-delta" id="deltaTvoc">&bull; Syncing</span>
+          <span class="card-delta" id="deltaTvoc">&bull; Awaiting</span>
         </div>
       </div>
     </section>
@@ -1267,11 +1295,13 @@
             <span>&#x1F4C8;</span> Live Environmental Trends
           </div>
           <div class="panel-tabs">
-            <button class="tab-btn active" id="tabAqi" onclick="switchChartMetric('aqi')" tabindex="10">IAQ Score</button>
+            <button class="tab-btn active" id="tabAqi" onclick="switchChartMetric('aqi')" tabindex="10">IAQ
+              Score</button>
             <button class="tab-btn" id="tabCo2" onclick="switchChartMetric('co2')" tabindex="11">CO2 (ppm)</button>
             <button class="tab-btn" id="tabPm25" onclick="switchChartMetric('pm25')" tabindex="12">PM 2.5</button>
             <button class="tab-btn" id="tabPm10" onclick="switchChartMetric('pm10')" tabindex="13">PM 10</button>
-            <button class="tab-btn" id="tabTemp" onclick="switchChartMetric('temp')" tabindex="14">Temp (&deg;C)</button>
+            <button class="tab-btn" id="tabTemp" onclick="switchChartMetric('temp')" tabindex="14">Temp
+              (&deg;C)</button>
             <button class="tab-btn" id="tabHum" onclick="switchChartMetric('hum')" tabindex="15">Humidity</button>
             <button class="tab-btn" id="tabTvoc" onclick="switchChartMetric('tvoc')" tabindex="16">TVOC</button>
           </div>
@@ -1292,7 +1322,7 @@
               <span>Optimal Safety Threshold</span>
             </div>
           </div>
-          <span style="font-size: 0.72rem; color: var(--text-dim);" id="chartPointsCount">Live 15-Point Buffer</span>
+          <span style="font-size: 0.72rem; color: var(--text-dim);" id="chartPointsCount">Live Buffer (0 points)</span>
         </div>
       </section>
 
@@ -1314,7 +1344,7 @@
                 <div class="comfort-desc">Adequate oxygen & low CO2 accumulation</div>
               </div>
             </div>
-            <div class="comfort-val" id="summaryFreshAir">86%</div>
+            <div class="comfort-val" id="summaryFreshAir">--</div>
           </div>
 
           <div class="comfort-card">
@@ -1325,7 +1355,7 @@
                 <div class="comfort-desc">Dust & PM filtering efficiency</div>
               </div>
             </div>
-            <div class="comfort-val" id="summaryDustFilter">Good</div>
+            <div class="comfort-val" id="summaryDustFilter">--</div>
           </div>
 
           <div class="comfort-card">
@@ -1336,7 +1366,7 @@
                 <div class="comfort-desc">Calculated heat & humidity comfort index</div>
               </div>
             </div>
-            <div class="comfort-val" id="summaryThermal">29.4 &deg;C</div>
+            <div class="comfort-val" id="summaryThermal">--</div>
           </div>
 
           <div class="comfort-card">
@@ -1344,7 +1374,7 @@
               <div class="comfort-icon">&#x267B;</div>
               <div>
                 <div class="comfort-title">Smart Recommendation</div>
-                <div class="comfort-desc" id="summaryRecommendation">Maintain steady AHU circulation to balance humidity.</div>
+                <div class="comfort-desc" id="summaryRecommendation">Awaiting telemetry stream to generate recommendation.</div>
               </div>
             </div>
           </div>
@@ -1380,7 +1410,11 @@
             </tr>
           </thead>
           <tbody id="telemetryTableBody">
-            <!-- Populated dynamically via API fetches -->
+            <tr>
+              <td colspan="10" style="text-align: center; padding: 24px; color: var(--text-dim);">
+                Awaiting live telemetry stream from API...
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1407,7 +1441,8 @@
 
       <div class="form-group">
         <label class="form-label" for="cfgApiEndpoint">API Endpoint Base URL</label>
-        <input type="text" class="form-input" id="cfgApiEndpoint" value="https://optibyte.sustainabyte.ai/provisionservice/v1/api/iaq-latest">
+        <input type="text" class="form-input" id="cfgApiEndpoint"
+          value="https://optibyte.sustainabyte.ai/provisionservice/v1/api/iaq-latest">
       </div>
 
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
@@ -1442,7 +1477,8 @@
       </div>
 
       <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
-        <button class="btn btn-primary" onclick="saveSettingsAndReload()" style="width:100%;">Save & Apply Settings</button>
+        <button class="btn btn-primary" onclick="saveSettingsAndReload()" style="width:100%;">Save & Apply
+          Settings</button>
       </div>
     </div>
   </div>
@@ -1459,7 +1495,7 @@
           if (typeof window !== "undefined" && window.localStorage) {
             return window.localStorage.getItem(key);
           }
-        } catch (e) {}
+        } catch (e) { }
         return null;
       },
       set(key, val) {
@@ -1467,7 +1503,7 @@
           if (typeof window !== "undefined" && window.localStorage) {
             window.localStorage.setItem(key, val);
           }
-        } catch (e) {}
+        } catch (e) { }
       }
     };
 
@@ -1498,24 +1534,14 @@
       pollSeconds: parseInt(urlParams.get("poll") || safeStorage.get("iaq_poll") || DEFAULT_CONFIG.pollSeconds, 10)
     };
 
-    // Runtime Telemetry State
-    let currentData = {
-      co2: 867.09,
-      pm25: 37.38,
-      pm10: 47.20,
-      temp: 28.60,
-      hum: 62.20,
-      tvoc: 33.98,
-      aqi: 72,
-      asOf: new Date().toISOString()
-    };
-
+    // Runtime Telemetry State (initially null until live API payload arrives)
+    let currentData = null;
     let prevData = null;
     let telemetryHistory = [];
     const MAX_TABLE_ROWS = 10;
     const MAX_CHART_POINTS = 20;
 
-    // Chart State
+    // Chart State (buffer populated strictly with real API telemetry)
     let activeChartMetric = "aqi";
     const chartHistory = {
       aqi: [],
@@ -1619,39 +1645,50 @@
         if (json.status === 1 && json.data) {
           processTelemetryPayload(json.data);
           if (pill) pill.className = "status-pill";
-          if (statusText) statusText.textContent = "API ACTIVE & SYNCED";
+          if (statusText) statusText.textContent = "LIVE API CONNECTED";
         } else {
           throw new Error(json.message || "Invalid status payload from server");
         }
       } catch (err) {
-        console.warn("[Optibyte IAQ] Direct API fetch note (CORS or network):", err.message);
-        if (pill) pill.className = "status-pill";
-        if (statusText) statusText.textContent = "LOCAL TELEMETRY ACTIVE";
+        console.warn("[Optibyte IAQ] API fetch error:", err.message);
+        if (pill) pill.className = "status-pill error";
+        if (statusText) statusText.textContent = "API CONNECTION ERROR";
 
-        // If running offline or browser restricts CORS on file://, perform graceful simulation with realistic micro-variations
-        simulateMicroFluctuations();
+        if (!currentData) {
+          const heroBadge = document.getElementById("heroStatusBadge");
+          if (heroBadge) {
+            heroBadge.textContent = "OFFLINE";
+            heroBadge.style.background = "rgba(239, 68, 68, 0.2)";
+            heroBadge.style.borderColor = "rgba(239, 68, 68, 0.4)";
+            heroBadge.style.color = "#f87171";
+          }
+          const heroSync = document.getElementById("heroLastSynced");
+          if (heroSync) heroSync.textContent = "Unable to connect to live API endpoint";
+        }
       }
 
       countdownTimer = config.pollSeconds;
     }
 
-    // Process Received Telemetry Data
+    // Process Received Telemetry Data Strictly From API Payload
     function processTelemetryPayload(d) {
-      prevData = { ...currentData };
+      if (!d) return;
+      prevData = currentData ? { ...currentData } : null;
 
-      // Field mapping based on Sustainabyte Influx API schema:
-      // co2 -> co2
-      // hum123 -> relative humidity
-      // pm10 -> pm10
-      // pm123 -> pm2.5
-      // tem432 -> temperature
-      // tvoc123 -> tvoc
-      const co2 = Number(d.co2 ?? currentData.co2);
-      const hum = Number(d.hum123 ?? d.hum ?? currentData.hum);
-      const pm10 = Number(d.pm10 ?? currentData.pm10);
-      const pm25 = Number(d.pm123 ?? d.pm25 ?? currentData.pm25);
-      const temp = Number(d.tem432 ?? d.temp ?? currentData.temp);
-      const tvoc = Number(d.tvoc123 ?? d.tvoc ?? currentData.tvoc);
+      // Extract telemetry from API schema:
+      // co2 -> d.co2
+      // hum123 -> d.hum123 or d.hum
+      // pm10 -> d.pm10
+      // pm123 -> d.pm123 or d.pm25
+      // tem432 -> d.tem432 or d.temp
+      // tvoc123 -> d.tvoc123 or d.tvoc
+      // asOf -> d.asOf
+      const co2 = Number(d.co2 ?? (prevData ? prevData.co2 : 0));
+      const hum = Number(d.hum123 ?? d.hum ?? (prevData ? prevData.hum : 0));
+      const pm10 = Number(d.pm10 ?? (prevData ? prevData.pm10 : 0));
+      const pm25 = Number(d.pm123 ?? d.pm25 ?? (prevData ? prevData.pm25 : 0));
+      const temp = Number(d.tem432 ?? d.temp ?? (prevData ? prevData.temp : 0));
+      const tvoc = Number(d.tvoc123 ?? d.tvoc ?? (prevData ? prevData.tvoc : 0));
       const asOf = d.asOf || new Date().toISOString();
 
       const aqi = calculateIaqScore(temp, hum, co2, pm25, pm10);
@@ -1681,7 +1718,7 @@
       });
       if (telemetryHistory.length > MAX_TABLE_ROWS) telemetryHistory.pop();
 
-      // Update UI
+      // Update UI with real values
       renderCards();
       renderHeroBanner();
       renderTelemetryTable();
@@ -1689,32 +1726,12 @@
       updateComfortAnalytics();
     }
 
-    // Micro Fluctuations fallback (keeps dashboard alive when testing offline/pendrive mode)
-    function simulateMicroFluctuations() {
-      const co2Noise = (Math.random() - 0.49) * 3.5;
-      const pm25Noise = (Math.random() - 0.5) * 0.4;
-      const pm10Noise = (Math.random() - 0.5) * 0.5;
-      const tempNoise = (Math.random() - 0.5) * 0.08;
-      const humNoise = (Math.random() - 0.5) * 0.15;
-      const tvocNoise = (Math.random() - 0.5) * 0.6;
-
-      const simulatedPayload = {
-        co2: Math.max(500, currentData.co2 + co2Noise),
-        pm123: Math.max(10, currentData.pm25 + pm25Noise),
-        pm10: Math.max(15, currentData.pm10 + pm10Noise),
-        tem432: Math.max(20, currentData.temp + tempNoise),
-        hum123: Math.max(30, Math.min(85, currentData.hum + humNoise)),
-        tvoc123: Math.max(5, currentData.tvoc + tvocNoise),
-        asOf: new Date().toISOString()
-      };
-
-      processTelemetryPayload(simulatedPayload);
-    }
-
     // ============================================================
     // UI RENDERERS - CARDS, DIALS, METRICS
     // ============================================================
     function renderCards() {
+      if (!currentData) return;
+
       // 1. CO2
       document.getElementById("valCo2").textContent = Math.round(currentData.co2);
       const co2Pct = Math.min(100, Math.max(5, (currentData.co2 / 1600) * 100));
@@ -1820,8 +1837,9 @@
 
     function renderDelta(elemId, current, previous) {
       const el = document.getElementById(elemId);
-      if (!el || previous === null || previous === undefined) {
-        if (el) el.innerHTML = `<span class="delta-same">&bull; Synced</span>`;
+      if (!el) return;
+      if (previous === null || previous === undefined) {
+        el.innerHTML = `<span class="delta-same">&bull; Live</span>`;
         return;
       }
       const diff = current - previous;
@@ -1835,6 +1853,7 @@
     }
 
     function renderHeroBanner() {
+      if (!currentData) return;
       const aqi = currentData.aqi;
       document.getElementById("heroScoreVal").textContent = aqi;
 
@@ -1897,11 +1916,13 @@
 
       const syncDate = new Date(currentData.asOf);
       const timeStr = syncDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      document.getElementById("heroLastSynced").textContent = `Synced at ${timeStr}`;
+      document.getElementById("heroLastSynced").textContent = `Live Telemetry at ${timeStr}`;
       document.getElementById("metaAsOf").textContent = timeStr;
     }
 
     function updateComfortAnalytics() {
+      if (!currentData) return;
+
       // Fresh Air Ratio
       const freshPct = Math.max(50, Math.min(99, Math.round(100 - (currentData.co2 - 400) / 12)));
       document.getElementById("summaryFreshAir").textContent = `${freshPct}%`;
@@ -1915,7 +1936,7 @@
       // Thermal Heat Index (Simplified Steadman approx)
       const t = currentData.temp;
       const rh = currentData.hum;
-      const heatIndex = t + 0.5555 * ((6.11 * Math.exp(5417.7530 * (1/273.16 - 1/(273.15 + t)))) * (rh/100) - 10);
+      const heatIndex = t + 0.5555 * ((6.11 * Math.exp(5417.7530 * (1 / 273.16 - 1 / (273.15 + t)))) * (rh / 100) - 10);
       document.getElementById("summaryThermal").textContent = `${heatIndex.toFixed(1)} \u00B0C`;
 
       // Recommendations
@@ -1936,6 +1957,11 @@
     function renderTelemetryTable() {
       const tbody = document.getElementById("telemetryTableBody");
       if (!tbody) return;
+
+      if (telemetryHistory.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; padding: 24px; color: var(--text-dim);">Awaiting live telemetry stream from API...</td></tr>`;
+        return;
+      }
 
       let html = "";
       telemetryHistory.forEach((row, i) => {
@@ -2020,7 +2046,16 @@
       ctx.clearRect(0, 0, width, height);
 
       const dataPoints = chartHistory[activeChartMetric] || [];
-      if (dataPoints.length < 2) return;
+      const countEl = document.getElementById("chartPointsCount");
+      if (countEl) countEl.textContent = `Live Buffer (${dataPoints.length} points)`;
+
+      if (dataPoints.length === 0) {
+        ctx.fillStyle = "#64748b";
+        ctx.font = "14px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Waiting for live API data stream...", width / 2, height / 2);
+        return;
+      }
 
       const paddingLeft = 45;
       const paddingRight = 24;
@@ -2032,16 +2067,19 @@
 
       let minVal = Math.min(...dataPoints);
       let maxVal = Math.max(...dataPoints);
-      if (minVal === maxVal) { minVal -= 1; maxVal += 1; }
-      const margin = (maxVal - minVal) * 0.2;
-      minVal = Math.max(0, minVal - margin);
-      maxVal += margin;
+      if (minVal === maxVal) { minVal = Math.max(0, minVal - 5); maxVal += 5; }
+      else {
+        const margin = (maxVal - minVal) * 0.2;
+        minVal = Math.max(0, minVal - margin);
+        maxVal += margin;
+      }
 
       // Grid Lines
       ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
       ctx.lineWidth = 1;
       ctx.fillStyle = "#64748b";
       ctx.font = "11px sans-serif";
+      ctx.textAlign = "left";
 
       const gridLines = 4;
       for (let i = 0; i <= gridLines; i++) {
@@ -2055,16 +2093,6 @@
         ctx.fillText(labelVal.toFixed(activeChartMetric === "co2" || activeChartMetric === "aqi" ? 0 : 1), 6, y + 4);
       }
 
-      // Calculate Point Coordinates
-      const points = [];
-      const stepX = plotW / (dataPoints.length - 1);
-      dataPoints.forEach((val, idx) => {
-        const x = paddingLeft + idx * stepX;
-        const norm = (val - minVal) / (maxVal - minVal);
-        const y = paddingTop + plotH * (1 - norm);
-        points.push({ x, y, val });
-      });
-
       // Accent Line & Gradient Colors
       let strokeColor = "#78C33D";
       let gradStop = "rgba(120, 195, 61, 0.35)";
@@ -2075,6 +2103,50 @@
       else if (activeChartMetric === "temp") { strokeColor = "#f97316"; gradStop = "rgba(249, 115, 22, 0.35)"; }
       else if (activeChartMetric === "hum") { strokeColor = "#06b6d4"; gradStop = "rgba(6, 182, 212, 0.35)"; }
       else if (activeChartMetric === "tvoc") { strokeColor = "#a855f7"; gradStop = "rgba(168, 85, 247, 0.35)"; }
+
+      // Handle single data point case
+      if (dataPoints.length === 1) {
+        const norm = (dataPoints[0] - minVal) / (maxVal - minVal);
+        const y = paddingTop + plotH * (1 - norm);
+        const x = paddingLeft + plotW / 2;
+
+        ctx.strokeStyle = strokeColor;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(paddingLeft, y);
+        ctx.lineTo(width - paddingRight, y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.beginPath();
+        ctx.arc(x, y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = strokeColor;
+        ctx.fill();
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        const valStr = dataPoints[0].toFixed(activeChartMetric === "co2" || activeChartMetric === "aqi" ? 0 : 1);
+        ctx.fillStyle = "#0c1322";
+        ctx.fillRect(x - 32, y - 28, 52, 20);
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(x - 32, y - 28, 52, 20);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 11px sans-serif";
+        ctx.fillText(valStr, x - 26, y - 14);
+        return;
+      }
+
+      // Calculate Point Coordinates
+      const points = [];
+      const stepX = plotW / (dataPoints.length - 1);
+      dataPoints.forEach((val, idx) => {
+        const x = paddingLeft + idx * stepX;
+        const norm = (val - minVal) / (maxVal - minVal);
+        const y = paddingTop + plotH * (1 - norm);
+        points.push({ x, y, val });
+      });
 
       // Area Fill
       const grad = ctx.createLinearGradient(0, paddingTop, 0, paddingTop + plotH);
@@ -2167,7 +2239,7 @@
     // ============================================================
     function updateTvScale(scaleVal) {
       document.documentElement.style.setProperty('--tv-scale', scaleVal);
-      try { localStorage.setItem("iaq_tv_scale", scaleVal); } catch(e) {}
+      try { localStorage.setItem("iaq_tv_scale", scaleVal); } catch (e) { }
       setTimeout(renderCanvasChart, 50);
     }
 
@@ -2215,10 +2287,10 @@
 
     function toggleFullscreen() {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
+        document.documentElement.requestFullscreen().catch(() => { });
       } else {
         if (document.exitFullscreen) {
-          document.exitFullscreen().catch(() => {});
+          document.exitFullscreen().catch(() => { });
         }
       }
     }
@@ -2269,21 +2341,7 @@
       const headerEquip = document.getElementById("headerEquipId");
       if (headerEquip) headerEquip.textContent = config.equipmentShortId;
 
-      // Seed baseline history for smooth chart on initial frame
-      const seedVal = 72;
-      for (let i = 0; i < 8; i++) {
-        chartHistory.aqi.push(seedVal + (Math.random() - 0.5) * 4);
-        chartHistory.co2.push(870 + (Math.random() - 0.5) * 20);
-        chartHistory.pm25.push(37 + (Math.random() - 0.5) * 3);
-        chartHistory.pm10.push(47 + (Math.random() - 0.5) * 4);
-        chartHistory.temp.push(28.5 + (Math.random() - 0.5) * 0.5);
-        chartHistory.hum.push(62 + (Math.random() - 0.5) * 1.5);
-        chartHistory.tvoc.push(34 + (Math.random() - 0.5) * 4);
-      }
-
       initTimers();
-      renderCards();
-      renderHeroBanner();
       renderCanvasChart();
 
       // Trigger immediate live GET request to the Sustainabyte API
@@ -2297,4 +2355,5 @@
     }
   </script>
 </body>
+
 </html>
